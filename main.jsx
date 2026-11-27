@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import "./style.css";
 
-const img = (name) => `/images/${name}.jpg`;
+const img = (name) => `${import.meta.env.BASE_URL}images/${name}.jpg`;
 const categories = [
   { id:"baseboard", title:"قرنیز", desc:"MDF، PVC و پلی‌استایرن", image:"category-baseboard" },
   { id:"parquet", title:"پارکت", desc:"گرم و طبیعی، برای هر فضا", image:"category-parquet" },
