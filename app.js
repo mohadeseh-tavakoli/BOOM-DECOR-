@@ -8,7 +8,7 @@ const products=[
 {id:6,name:'لمینت طوسی مدرن AC4',cat:'laminate',price:389000,unit:'هر متر مربع',img:'category-laminate.jpg',code:'BD-312',color:'طوسی'},
 {id:7,name:'قرنیز پلی‌استایرن ۷ سانتی',cat:'baseboard',price:125000,unit:'شاخه ۲.۸ متری',img:'product-baseboard.jpg',code:'BD-108',color:'سفید'},
 {id:8,name:'پارکت مهندسی‌شده طرح گردو',cat:'parquet',price:510000,unit:'هر متر مربع',img:'product-flooring.jpg',code:'BD-208',color:'گردویی'}];
-const money=n=>new Intl.NumberFormat('fa-IR').format(n)+' تومان', img=n=>'images/'+n;
+const money=n=>new Intl.NumberFormat('fa-IR').format(n)+' تومان', img=n=>n;
 let page='home',category='all',query='',cart=JSON.parse(localStorage.getItem('bdcart')||'[]'),favs=JSON.parse(localStorage.getItem('bdfavs')||'[]'),selected=products[0];
 const app=document.getElementById('app'),toast=t=>{let el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2000)};
 function go(p){page=p;render();window.scrollTo(0,0);document.getElementById('nav').classList.remove('open')}
