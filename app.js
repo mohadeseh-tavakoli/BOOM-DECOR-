@@ -1,0 +1,19 @@
+const data=[
+{id:1,n:'پارکت لمینت طرح بلوط طبیعی',c:'پارکت و لمینت',p:1850000,img:'images/product-laminate-oak.jpg',tag:'پیشنهاد منتخب'},
+{id:2,n:'پارکت لمینت رنگ گردویی',c:'پارکت و لمینت',p:2120000,img:'images/product-laminate-walnut.jpg',tag:''},
+{id:3,n:'قرنیز پلی‌استایرن سفید',c:'قرنیز',p:265000,img:'images/product-baseboard-white.jpg',tag:'پرفروش'},
+{id:4,n:'قرنیز طرح چوب روشن',c:'قرنیز',p:318000,img:'images/product-baseboard-white.jpg',tag:''},
+{id:5,n:'ابزار گلویی پلی‌استایرن',c:'ابزار پلی‌استایرن',p:195000,img:'images/product-polystyrene.jpg',tag:''},
+{id:6,n:'ابزار قاب‌بندی دکوراتیو',c:'ابزار پلی‌استایرن',p:245000,img:'images/product-polystyrene.jpg',tag:'جدید'},
+{id:7,n:'پارکت لمینت رنگ طوسی گرم',c:'پارکت و لمینت',p:1980000,img:'images/product-laminate-oak.jpg',tag:''},
+{id:8,n:'نبشی و پروفیل دکوراتیو',c:'ابزار پلی‌استایرن',p:175000,img:'images/product-polystyrene.jpg',tag:''}
+];
+let filter='همه',cart=[];const fa=n=>new Intl.NumberFormat('fa-IR').format(n);
+function render(){let q=document.querySelector('#query').value.trim();let list=data.filter(x=>(filter==='همه'||x.c===filter)&&x.n.includes(q));let s=document.querySelector('#sort').value;if(s==='asc')list.sort((a,b)=>a.p-b.p);if(s==='desc')list.sort((a,b)=>b.p-a.p);document.querySelector('#productsGrid').innerHTML=list.map(x=>`<article class="product"><div class="product-img" style="background-image:url('${x.img}')">${x.tag?`<span class="badge">${x.tag}</span>`:''}</div><div class="p-info"><small>${x.c}</small><h3>${x.n}</h3><div class="p-bottom"><span class="price">${fa(x.p)} تومان<small>قیمت نمونه · واحد فروش نیازمند تأیید</small></span><button class="add" onclick="add(${x.id})" aria-label="افزودن به سبد خرید">+</button></div></div></article>`).join('')||'<p>محصولی پیدا نشد.</p>'}
+function add(id){let p=data.find(x=>x.id===id),old=cart.find(x=>x.id===id);old?old.qty++:cart.push({...p,qty:1});cartRender();openDrawer()}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);cartRender()}
+function cartRender(){document.querySelector('#count').textContent=fa(cart.reduce((a,x)=>a+x.qty,0));document.querySelector('#cartItems').innerHTML=cart.length?cart.map(x=>`<div class="cart-row"><span>${x.n}<br>${fa(x.qty)} عدد</span><b>${fa(x.p*x.qty)} تومان</b><button onclick="removeItem(${x.id})">حذف</button></div>`).join(''):'سبد خرید شما خالی است.';document.querySelector('#total').textContent=fa(cart.reduce((a,x)=>a+x.p*x.qty,0))+' تومان'}
+const drawer=document.querySelector('#drawer'),shade=document.querySelector('#shade');function openDrawer(){drawer.classList.add('open');shade.classList.add('show')}function closeDrawer(){drawer.classList.remove('open');shade.classList.remove('show')}
+document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');filter=b.dataset.filter;render()});
+document.querySelectorAll('.cat').forEach(a=>a.onclick=()=>{filter=a.dataset.cat;document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('selected',b.dataset.filter===filter));render()});
+document.querySelector('#query').oninput=render;document.querySelector('#sort').onchange=render;document.querySelector('#cartOpen').onclick=openDrawer;document.querySelector('#closeCart').onclick=closeDrawer;shade.onclick=closeDrawer;document.querySelector('#searchJump').onclick=()=>{document.querySelector('#products').scrollIntoView({behavior:'smooth'});document.querySelector('#query').focus()};document.querySelector('#hamb').onclick=()=>document.querySelector('#nav').classList.toggle('show');document.querySelector('#checkout').onclick=()=>alert('این نسخه نمونه‌کار است. برای پرداخت واقعی باید بک‌اند، ثبت سفارش و درگاه پرداخت امن متصل شود.');render();cartRender();
