@@ -1,11 +1,25 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#263d32" />
-    <meta name="description" content="بوم دکور؛ انتخابی ماندگار برای کف و دیوار خانه شما." />
-    <title>بوم دکور | زیبایی ماندگار در فضای شما</title>
-  </head>
-  <body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
-</html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="فروشگاه تخصصی قرنیز، پارکت، لمینت و ابزار دکوراتیو بوم دکور">
+<title>بوم دکور | زیبایی ماندگار</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topline">ارسال به سراسر ایران | مشاوره رایگان انتخاب محصولات</div>
+<header class="site-header">
+ <div class="container headrow">
+  <button class="hamb" id="hamb">☰</button>
+  <a class="logo" href="#" data-page="home"><span class="logoicon">⌂</span><span>بوم دکور<small>زیبایی ماندگار</small></span></a>
+  <label class="search"><span>⌕</span><input id="search" placeholder="جستجوی قرنیز، پارکت، لمینت..."></label>
+  <div class="headlinks"><button data-page="account">حساب من</button><button data-page="favorites">♡ علاقه‌مندی <b id="favcount">0</b></button><button class="cartlink" data-page="cart">سبد خرید <b id="cartcount">0</b></button></div>
+ </div>
+ <nav id="nav"><div class="container navrow">
+  <a data-page="home">صفحه اصلی</a><a data-page="shop">فروشگاه</a><a data-cat="baseboard">قرنیز</a><a data-cat="parquet">پارکت</a><a data-cat="laminate">لمینت</a><a data-cat="tools">ابزار پلی‌استایرن</a><a data-page="blog">مجله دکور</a><a data-page="about">درباره ما</a><a data-page="contact">تماس با ما</a>
+ </div></nav>
+</header>
+<main id="app"></main>
+<footer><div class="container footgrid"><div><div class="logo footlogo"><span class="logoicon">⌂</span><span>بوم دکور<small>زیبایی ماندگار</small></span></div><p>با بوم دکور، جزئیات خانه‌تان را به امضای سلیقه خود تبدیل کنید. انتخابی مطمئن برای کف و دیوار.</p></div><div><h3>دسترسی سریع</h3><a data-page="shop">فروشگاه</a><a data-page="about">درباره ما</a><a data-page="contact">تماس با ما</a></div><div><h3>راهنمای خرید</h3><a data-page="calculator">محاسبه متراژ</a><a data-page="account">حساب کاربری</a><a data-page="cart">سبد خرید</a></div><div><h3>ارتباط با ما</h3><p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p><p>شنبه تا پنجشنبه، ۹ تا ۱۸</p><p>اینستاگرام: boom.decor</p></div></div><div class="copyright">© تمامی حقوق برای بوم دکور محفوظ است.</div></footer>
+<div id="toast" class="toast"></div><script src="app.js"></script>
+</body></html>

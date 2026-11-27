@@ -1,0 +1,8 @@
+آپلود:
+- محتویات همین پوشه را در ریشه Repository قرار دهید.
+- GitHub → Settings → Pages
+- Source: Deploy from a branch
+- Branch: main
+- Folder: / (root)
+- Save
+نیازی به npm، React، Vite یا GitHub Actions نیست.
